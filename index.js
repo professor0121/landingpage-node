@@ -1,10 +1,14 @@
 const express = require("express");
 const path = require("path");
 const sendMail = require("./services/smtp.service.js");
+const cors=require("cors");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors({
+  origin: ["https://thewebtab.com", "https://landingpage-node-b35sopjpz-professor0121s-projects.vercel.app"]
+}));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
