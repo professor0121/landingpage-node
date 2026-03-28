@@ -1,14 +1,30 @@
 {
   "name": "thewebtab",
   "version": "1.0.0",
-  "description": "",
+  "description": "A modern web application built by Abhishek Kushwaha focusing on scalable backend services using Node.js and Express.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
     "start": "node index.js"
   },
-  "author": "",
+  "keywords": [
+    "nodejs",
+    "express",
+    "backend",
+    "api",
+    "web-development",
+    "javascript"
+  ],
+  "author": "Abhishek Kushwaha",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/professor0121/landingpage-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/professor0121/landingpage-node/issues"
+  },
+  "homepage": "https://thewebtab.com",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.6",
