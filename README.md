@@ -49,10 +49,10 @@ thelandingpage/
 
 ## Prerequisites
 
-| Tool | Minimum version |
-|------|----------------|
-| Node.js | 16+ |
-| npm | 8+ |
+| Tool          | Minimum version                              |
+| ------------- | -------------------------------------------- |
+| Node.js       | 16+                                          |
+| npm           | 8+                                           |
 | Gmail account | with an **App Password** enabled (see below) |
 
 ---
@@ -100,13 +100,14 @@ thelandingpage/
 
 Copy `.env.example` to `.env` and populate the following:
 
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `SMTP_USER` | Gmail address used to send emails | `you@gmail.com` |
+| Variable    | Description                                           | Example               |
+| ----------- | ----------------------------------------------------- | --------------------- |
+| `SMTP_USER` | Gmail address used to send emails                     | `you@gmail.com`       |
 | `SMTP_PASS` | Gmail **App Password** (16-character, spaces allowed) | `abcd efgh ijkl mnop` |
-| `PORT` | *(optional)* Port for the Express server | `3000` |
+| `PORT`      | _(optional)_ Port for the Express server              | `3000`                |
 
 > **How to get a Gmail App Password**
+>
 > 1. Enable 2-Step Verification on your Google account.
 > 2. Go to **Google Account → Security → App Passwords**.
 > 3. Generate a password for "Mail" / "Other".
@@ -116,9 +117,9 @@ Copy `.env.example` to `.env` and populate the following:
 
 ## API Endpoints
 
-| Method | Path | Description |
-|--------|------|-------------|
-| `GET` | `/` | Serves `public/index.html` |
+| Method | Path           | Description                                              |
+| ------ | -------------- | -------------------------------------------------------- |
+| `GET`  | `/`            | Serves `public/index.html`                               |
 | `POST` | `/submit-form` | Processes form, sends email, serves `public/submit.html` |
 
 ### `POST /submit-form`
@@ -131,17 +132,17 @@ Accepts `application/x-www-form-urlencoded` or `application/json`.
 
 The contact form collects the following fields and includes them in the notification email:
 
-| Field name | Description |
-|------------|-------------|
-| `name` | Submitter's full name |
-| `Email` | Submitter's email address |
-| `Phone` | Submitter's phone number |
-| `Website-URL` | Their website URL |
-| `Ads-Spends` | Current monthly ad spend |
-| `Where-did-you-get-to-hear-about-us` | Referral / discovery source |
-| `Urgency` | How urgently they need help |
-| `Problem-Statements-List` | Key problems they want solved |
-| `Product-Page-Link` | Link to their product page |
+| Field name                           | Description                   |
+| ------------------------------------ | ----------------------------- |
+| `name`                               | Submitter's full name         |
+| `Email`                              | Submitter's email address     |
+| `Phone`                              | Submitter's phone number      |
+| `Website-URL`                        | Their website URL             |
+| `Ads-Spends`                         | Current monthly ad spend      |
+| `Where-did-you-get-to-hear-about-us` | Referral / discovery source   |
+| `Urgency`                            | How urgently they need help   |
+| `Problem-Statements-List`            | Key problems they want solved |
+| `Product-Page-Link`                  | Link to their product page    |
 
 ---
 
@@ -150,6 +151,7 @@ The contact form collects the following fields and includes them in the notifica
 The project is configured for **Vercel** deployment.
 
 CORS is pre-configured for:
+
 - `https://thewebtab.com`
 - Vercel preview URLs (`*.vercel.app`)
 
@@ -160,3 +162,33 @@ Set the environment variables (`SMTP_USER`, `SMTP_PASS`) in the Vercel dashboard
 ## License
 
 ISC © [Abhishek Kushwaha](https://github.com/professor0121)
+
+# To do ....
+
+Updated Form Fields Schema
+
+1. Revenue
+   Type: Dropdown (Select)
+   Field Name: revenue
+
+Options:
+```js
+[
+{ "label": "Want to start", "value": "start" },
+{ "label": "0 - 10,000", "value": "0-10000" },
+{ "label": "10,000 - 20,000", "value": "10000-20000" },
+{ "label": "20,000 - 30,000", "value": "20000-30000" },
+{ "label": "Above 30,000", "value": "above-30000" }
+] 
+```
+2. What do you want?
+Type: Dropdown (Select)
+Field Name: requirement
+
+Options:
+```js
+[
+{ "label": "Want a new store", "value": "new_store" },
+{ "label": "Redesign / Optimize existing store", "value": "redesign_optimize" }
+]
+```
