@@ -2,18 +2,18 @@ require("dotenv").config();
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
-    auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS
-    }
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS
+  }
 });
 
 const sendMail = async (data) => {
 
-    const html = `
+  const html = `
   <div style="font-family:Arial;padding:20px">
     <h2>New Form Submission</h2>
 
@@ -39,30 +39,20 @@ const sendMail = async (data) => {
       </tr>
 
       <tr>
-        <th align="left">Ads Spends</th>
-        <td>${data["Ads-Spends"] || ""}</td>
+        <th align="left">Revenue</th>
+        <td>${data["revenue"] || ""}</td>
       </tr>
 
       <tr>
-        <th align="left">Heard About Us</th>
-        <td>${data["Where-did-you-get-to-hear-about-us"] || ""}</td>
+        <th align="left">What do you want ?</th>
+        <td>${data["what-do-you-want"] || ""}</td>
       </tr>
 
+  
       <tr>
-        <th align="left">Urgency</th>
-        <td>${data.Urgency || ""}</td>
+        <th align="left">Reference</th>
+        <td>${data["reference"] || ""}</td>
       </tr>
-
-      <tr>
-        <th align="left">Problem List</th>
-        <td>${data["Problem-Statements-List"] || ""}</td>
-      </tr>
-
-      <tr>
-        <th align="left">Product Page</th>
-        <td>${data["Product-Page-Link"] || ""}</td>
-      </tr>
-
     </table>
 
     <p style="margin-top:20px;color:gray">
@@ -72,19 +62,19 @@ const sendMail = async (data) => {
   </div>
   `;
 
-    try {
-        const info = await transporter.sendMail({
-            from: `"Website Form Resposne" ${process.env.SMTP_USER}`,
-            to: process.env.SMTP_USER,
-            subject: "New Website Lead",
-            html
-        });
+  try {
+    const info = await transporter.sendMail({
+      from: `"Website Form Resposne" ${process.env.SMTP_USER}`,
+      to: process.env.SMTP_USER,
+      subject: "New Website Lead",
+      html
+    });
 
-        console.log("Email sent:", info.messageId);
+    console.log("Email sent:", info.messageId);
 
-    } catch (error) {
-        console.error("Email error:", error);
-    }
+  } catch (error) {
+    console.error("Email error:", error);
+  }
 };
 
 module.exports = sendMail;
